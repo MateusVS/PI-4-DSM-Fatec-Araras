@@ -1,6 +1,5 @@
 import { DataTypes } from "sequelize";
 import bcrypt from "bcryptjs";
-import { NextFunction } from "express";
 import { db } from "../../database/db";
 
 export const User = db.define(
@@ -60,10 +59,21 @@ export const User = db.define(
       beforeSave: (User) => {
         const salt = bcrypt.genSaltSync(8);
 
-        const user = User.getDataValue("password");
+        const userPassword = User.getDataValue("password");
 
-        User.setDataValue("password", bcrypt.hashSync(user, salt));
+        User.setDataValue("password", bcrypt.hashSync(userPassword, salt));
       },
     },
   }
 );
+
+// User.prototype.validPassword = function (password: string) {
+//   return bcrypt.compareSync(password, this.password);
+// };
+
+export const validatePassword = (
+  resultPassword: string,
+  userPassword: string
+) => {
+  return bcrypt.compareSync(userPassword, resultPassword);
+};

@@ -38,6 +38,7 @@ class UserController {
       where: {
         id: id,
       },
+      individualHooks: true,
     })
       .then(() => res.status(204).send())
       .catch((error) => res.status(500).json({ error: error }));
