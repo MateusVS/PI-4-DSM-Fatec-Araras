@@ -1,59 +1,56 @@
-import { Request, Response } from "express";
-import { User } from "../models/User";
+import { Request, Response } from 'express';
+import ListUsersUseCase from '@useCases/usersUseCases/ListUsersUseCase';
+import CreateUserUseCase from '@useCases/usersUseCases/CreateUserUseCase';
+import DestroyUserUseCase from '@useCases/usersUseCases/DestroyUserUseCase';
+import ShowUserUseCase from '@useCases/usersUseCases/ShowUserUseCase';
+import UpdateUserUseCase from '@useCases/usersUseCases/UpdateUserUseCase';
 
 class UserController {
-  async findAll(req: Request, res: Response) {
-    await User.findAll()
-      .then((data) =>
-        data.length > 0
-          ? res.status(200).json({ data })
-          : res.status(204).send()
-      )
-      .catch((error) => res.status(500).json({ error: error }));
+  async index(_req: Request, res: Response) {
+    const listUsersUseCase = new ListUsersUseCase();
+
+    const users = await listUsersUseCase.execute();
+    const statusCode = users.length > 0 ? 200 : 204;
+
+    return res.status(statusCode).json(users);
   }
 
-  async findOne(req: Request, res: Response) {
+  async show(req: Request, res: Response) {
     const { id } = req.params;
-    await User.findOne({
-      where: {
-        id: id,
-      },
-    })
-      .then((data) =>
-        data ? res.status(200).json({ data }) : res.status(204).send()
-      )
-      .catch((error) => res.status(500).json({ error: error }));
+
+    const showUserUseCase = new ShowUserUseCase();
+
+    const user = await showUserUseCase.execute(Number(id));
+
+    return res.status(200).json(user)
   }
 
   async create(req: Request, res: Response) {
-    await User.create(req.body)
-      .then((data) => res.status(201).json({ data }))
-      .catch((error) => res.status(500).json({ error: error }));
+    const createUserUseCase = new CreateUserUseCase();
+
+    const user = await createUserUseCase.execute(req.body);
+
+    return res.status(201).json(user);
   }
 
   async update(req: Request, res: Response) {
     const { id } = req.params;
 
-    await User.update(req.body, {
-      where: {
-        id: id,
-      },
-      individualHooks: true,
-    })
-      .then(() => res.status(204).send())
-      .catch((error) => res.status(500).json({ error: error }));
+    const updateUserUseCase = new UpdateUserUseCase();
+
+    await updateUserUseCase.execute(Number(id), req.body);
+
+    return res.status(204).send();
   }
 
   async destroy(req: Request, res: Response) {
     const { id } = req.params;
 
-    await User.destroy({
-      where: {
-        id: id,
-      },
-    })
-      .then(() => res.status(204).send())
-      .catch((error) => res.status(500).json({ error: error }));
+    const destroyUserUseCase = new DestroyUserUseCase();
+
+    await destroyUserUseCase.execute(Number(id));
+
+    return res.status(204).send();
   }
 }
 

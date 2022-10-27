@@ -5,7 +5,7 @@ import weatherForecastRoutes from "./weatherForecast.routes";
 
 const routes = Router();
 
-routes.use("/users", usersRoutes);
+routes.use("/user", usersRoutes);
 routes.use("/auth", authRoutes);
 routes.use("/weather-forecast", weatherForecastRoutes);
 

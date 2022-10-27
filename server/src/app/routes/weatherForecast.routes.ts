@@ -1,6 +1,6 @@
 import { Router } from "express";
 import authMiddleware from "../middlewares/auth";
-import WeatherForecastController from "../controllers/WeatherForecastController";
+import WeatherForecastController from "@controllers/WeatherForecastController";
 
 const weatherForecastRoutes = Router();
 

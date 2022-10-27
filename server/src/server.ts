@@ -1,5 +1,5 @@
 import app from './app';
-import { db } from "./database/db";
+import { db } from './database/db';
 
 app.listen(process.env.SERVER_PORT, async () => {
   await db.sync();

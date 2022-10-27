@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { User, validatePassword } from "../models/User";
+import { User, validatePassword } from "@models/entities/User";
 import jwt from "jsonwebtoken";
-import auth, { IJwt } from "../../config/auth";
+import auth, { IJwt } from "@config/auth";
 
 class AuthController {
   async authenticate(req: Request, res: Response) {
