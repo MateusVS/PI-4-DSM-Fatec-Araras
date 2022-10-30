@@ -4,6 +4,7 @@ import CreateUserUseCase from '@useCases/usersUseCases/CreateUserUseCase';
 import DestroyUserUseCase from '@useCases/usersUseCases/DestroyUserUseCase';
 import ShowUserUseCase from '@useCases/usersUseCases/ShowUserUseCase';
 import UpdateUserUseCase from '@useCases/usersUseCases/UpdateUserUseCase';
+import IUser from '@models/interfaces/IUsers';
 
 class UserController {
   async index(_req: Request, res: Response) {
@@ -34,11 +35,12 @@ class UserController {
   }
 
   async update(req: Request, res: Response) {
-    const { id } = req.params;
+    const id = Number(req.params.id);
+    const { name, email, password } = req.body;
 
     const updateUserUseCase = new UpdateUserUseCase();
 
-    await updateUserUseCase.execute(Number(id), req.body);
+    await updateUserUseCase.execute({ id, name, email, password } as IUser);
 
     return res.status(204).send();
   }

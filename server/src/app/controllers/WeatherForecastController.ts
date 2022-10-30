@@ -1,14 +1,13 @@
-import { Request, Response } from "express";
-import OpenWeatherService from "../services/openWeatherService";
+import ShowWeatherForecastUseCase from '@useCases/WeatherForecastUseCases/ShowWeatherForecastUseCase';
+import { Request, Response } from 'express';
 
 class WeatherForecastController {
   async GetWeatherForecast(req: Request, res: Response) {
-    const weatherForecastService = new OpenWeatherService();
+    const showWeatherForecast = new ShowWeatherForecastUseCase();
 
-    await weatherForecastService
-      .getWeatherForecast("araras")
-      .then((data) => res.status(200).json({ data }))
-      .catch((error) => res.status(500).json({ error: error }));
+    const weatherForecastData = await showWeatherForecast.execute();
+
+    return res.status(200).json(weatherForecastData);
   }
 }
 

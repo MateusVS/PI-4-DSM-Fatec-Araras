@@ -24,7 +24,7 @@ class UserRepository extends User {
     });
   }
 
-  public async findByEmail(email: string): Promise<IUser | null>  {
+  public static async findByEmail(email: string): Promise<IUser | null>  {
     return await User.findOne({
       where: {
         email,
@@ -45,6 +45,8 @@ class UserRepository extends User {
   }
 
   public static async updateUser(user: IUser): Promise<void> {
+    console.log(user)
+
     await User.update(user, {
                         where: {
                           id: user.id,
@@ -68,7 +70,7 @@ class UserRepository extends User {
     });
   }
 
-  public validatePassword(
+  public static validatePassword(
     resultPassword: string,
     userPassword: string
   ): boolean {
