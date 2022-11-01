@@ -1,4 +1,4 @@
-import IUser from '@models/interfaces/IUsers';
+import IUser from '@models/interfaces/IUser';
 import UserRepository from '@models/repositories/UserRepository';
 
 class CreateUserUseCase {

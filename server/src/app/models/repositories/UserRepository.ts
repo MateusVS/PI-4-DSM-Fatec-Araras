@@ -1,7 +1,7 @@
 import { User } from '../entities/User';
 import AppError from '../../../utils/errors/AppError';
 import bcrypt from 'bcryptjs';
-import IUser from '@models/interfaces/IUsers';
+import IUser from '@models/interfaces/IUser';
 
 class UserRepository extends User {
   public static async findAllWithouthPassword(): Promise<IUser[]> {
@@ -45,8 +45,6 @@ class UserRepository extends User {
   }
 
   public static async updateUser(user: IUser): Promise<void> {
-    console.log(user)
-
     await User.update(user, {
                         where: {
                           id: user.id,

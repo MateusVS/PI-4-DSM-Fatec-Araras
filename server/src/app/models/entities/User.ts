@@ -1,7 +1,7 @@
-import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from "sequelize";
-import bcrypt from "bcryptjs";
-import { db } from "../../../database/db";
-import IUser from "@models/interfaces/IUsers";
+import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from 'sequelize';
+import bcrypt from 'bcryptjs';
+import { db } from '../../../database/db';
+import IUser from '@models/interfaces/IUser';
 
 const sequelize = db as Sequelize;
 
@@ -25,16 +25,16 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false,
     unique: {
-      name: "E-mail já utilizado",
-      msg: "Este endereço de e-mail já esta sendo utilizado por outro usuário!",
+      name: 'E-mail já utilizado',
+      msg: 'Este endereço de e-mail já esta sendo utilizado por outro usuário!',
     },
   },
   name: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: {
-      name: "E-mail já utilizado",
-      msg: "Este endereço de e-mail já esta sendo utilizado por outro usuário!",
+      name: 'E-mail já utilizado',
+      msg: 'Este endereço de e-mail já esta sendo utilizado por outro usuário!',
     }
   },
   password: {
@@ -42,11 +42,11 @@ User.init({
     allowNull: false,
     validate: {
       notEmpty: {
-        msg: "Esse campo nao pode ser vazio",
+        msg: 'O campo senha não pode ser vazio',
       },
       len: {
         args: [8, 16],
-        msg: "Esse campo deve ter entre 8 e 16 caracteres",
+        msg: 'O campo senha não deve ter entre 8 e 16 caracteres',
       },
     },
   },
@@ -70,14 +70,3 @@ User.addHook('beforeSave', (User) => {
 User.addScope('withouthPassword', {
   attributes: { exclude: ['password'] }
 });
-
-// User.prototype.validPassword = function (password: string) {
-//   return bcrypt.compareSync(password, this.password);
-// };
-
-export const validatePassword = (
-  resultPassword: string,
-  userPassword: string
-) => {
-  return bcrypt.compareSync(userPassword, resultPassword);
-};

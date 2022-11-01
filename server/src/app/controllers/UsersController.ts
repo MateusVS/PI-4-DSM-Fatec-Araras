@@ -4,7 +4,7 @@ import CreateUserUseCase from '@useCases/usersUseCases/CreateUserUseCase';
 import DestroyUserUseCase from '@useCases/usersUseCases/DestroyUserUseCase';
 import ShowUserUseCase from '@useCases/usersUseCases/ShowUserUseCase';
 import UpdateUserUseCase from '@useCases/usersUseCases/UpdateUserUseCase';
-import IUser from '@models/interfaces/IUsers';
+import IUser from '@models/interfaces/IUser';
 
 class UserController {
   async index(_req: Request, res: Response) {
