@@ -1,6 +1,7 @@
 import IEvent from '@models/interfaces/IEvent';
 import { DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize } from 'sequelize';
 import { db } from '../../../database/db';
+import { User } from './User';
 
 const sequelize = db as Sequelize;
 
@@ -68,3 +69,13 @@ Event.init({
     allowNull: false,
   },
 }, { sequelize });
+
+User.hasMany(Event, {
+  foreignKey: 'userId',
+  as: 'events'
+});
+
+Event.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'user'
+});

@@ -1,14 +1,28 @@
 import AddEventCommentUseCase from '@useCases/eventsUseCases/AddEventCommentUseCase';
 import CreateEventUseCase from '@useCases/eventsUseCases/CreateEventUseCase';
+import ListEventsUseCase from '@useCases/eventsUseCases/ListEventsUseCase';
+import ShowEventUseCase from '@useCases/eventsUseCases/ShowEventUseCase';
 import { Request, Response } from 'express';
 
 class EventsController {
   async index(req: Request, res: Response) {
-    const { user_id } = req.body;
+    const { userId } = req.body;
 
-    /* TODO */
+    const listEventsUseCase = new ListEventsUseCase();
 
-    return res.status(200).json({});
+    const events = listEventsUseCase.execute(userId);
+
+    return res.status(200).json(events);
+  }
+
+  async show(req: Request, res: Response) {
+    const id = Number(req.params.id);
+
+    const showEventUseCase = new ShowEventUseCase();
+
+    const event = showEventUseCase.execute(id);
+
+    return res.status(200).json(event);
   }
 
   async create(req: Request, res: Response) {

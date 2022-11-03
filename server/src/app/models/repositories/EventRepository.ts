@@ -23,10 +23,22 @@ class EventRepository extends Event {
                   });
   }
 
-  public static async addEventComment(event_id: number, comment: string): Promise<void> {
+  public static async findEventByUser(userId: number): Promise<IEvent[]> {
+    return await Event.findAll({
+                                where: {
+                                  userId,
+                                }
+                              })
+                               .then(data => data)
+                               .catch(error => {
+                                throw new AppError(error, 500);
+                               });
+  }
+
+  public static async addEventComment(eventId: number, comment: string): Promise<void> {
     await Event.update({ comments: comment }, {
                             where: {
-                              id: event_id,
+                              id: eventId,
                             },
                           })
                           .then(data => data)
