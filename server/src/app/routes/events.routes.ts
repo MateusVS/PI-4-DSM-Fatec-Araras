@@ -5,7 +5,7 @@ import EventsController from '@controllers/EventsController';
 const eventsRoutes = Router();
 
 eventsRoutes.get('/', authMiddleware, EventsController.index);
-eventsRoutes.get('/:id', authMiddleware, EventsController.show);
+eventsRoutes.get('/:user_id', authMiddleware, EventsController.show);
 eventsRoutes.post('/', EventsController.create);
 eventsRoutes.patch('/:id', authMiddleware, EventsController.updateEventComment);
 

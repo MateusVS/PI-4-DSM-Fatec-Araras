@@ -16,11 +16,11 @@ class EventsController {
   }
 
   async show(req: Request, res: Response) {
-    const id = Number(req.params.id);
+    const user_id = Number(req.params.user_id);
 
     const showEventUseCase = new ShowEventUseCase();
 
-    const event = showEventUseCase.execute(id);
+    const event = showEventUseCase.execute(user_id);
 
     return res.status(200).json(event);
   }

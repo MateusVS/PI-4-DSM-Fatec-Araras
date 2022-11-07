@@ -3,7 +3,7 @@ import EventRepository from '@models/repositories/EventRepository';
 
 class CreateEventUseCase {
   public async execute(event: IEvent): Promise<IEvent> {
-    const newEvent = EventRepository.create(event);
+    const newEvent = await EventRepository.create(event);
 
     return newEvent;
   }
