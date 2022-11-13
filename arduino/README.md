@@ -25,4 +25,7 @@ Dispositivo criado para monitoramento capaz de identificar e alertar sobre alter
 ## Dispositivo em funcionamento
 
 <table>
+  <tr>
+    <td><img src="https://github.com/MateusVS/PI-4-DSM-Fatec-Araras/blob/main/arduino/imagens/dispositivo-termosafe-1.jpg" alt="Dispotivo em funcionamento" style="height: 50%; width:50%;"/></td>
+  </tr>
 </table>
