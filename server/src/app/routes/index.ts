@@ -11,6 +11,6 @@ routes.use('/user', usersRoutes);
 routes.use('/auth', authRoutes);
 routes.use('/events', eventRoutes);
 routes.use('/weather-forecast', weatherForecastRoutes);
-routes.use('/settingsRoutes', settingsRoutes);
+routes.use('/settings', settingsRoutes);
 
 export default routes;

@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
-import auth, { IJwt } from "@config/auth";
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import auth, { IJwt } from '@config/auth';
 
 interface ITokenPayload {
   id: string;
@@ -11,13 +11,13 @@ interface ITokenPayload {
 export default function authMiddleware(
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   const { authorization } = req.headers;
 
   if (!authorization) return res.sendStatus(401);
 
-  const token = authorization.replace("Bearer", "").trim();
+  const token = authorization.replace('Bearer', '').trim();
 
   try {
     const { secret } = auth as IJwt;

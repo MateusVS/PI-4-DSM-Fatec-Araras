@@ -34,7 +34,7 @@ Settings.init({
     },
   },
   blue_led_temperature: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: {
@@ -43,7 +43,7 @@ Settings.init({
     },
   },
   green_led_temperature: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: {
@@ -52,7 +52,7 @@ Settings.init({
     },
   },
   red_led_temperature: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: {
@@ -61,7 +61,7 @@ Settings.init({
     },
   },
   yellow_led_temperature: {
-    type: DataTypes.NUMBER,
+    type: DataTypes.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: {

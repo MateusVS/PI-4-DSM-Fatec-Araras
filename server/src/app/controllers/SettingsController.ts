@@ -1,7 +1,7 @@
 import ShowEventUseCase from '@useCases/eventsUseCases/ShowEventUseCase';
-import CreateSettingsUseCase from '@useCases/settingsUseCases./CreateSettingsUseCase';
-import DestroySettingsUseCase from '@useCases/settingsUseCases./DestroySettingsUseCase';
-import UpdateSettingsUseCase from '@useCases/settingsUseCases./UpdateSettingsUseCase';
+import CreateSettingsUseCase from '@useCases/settingsUseCases/CreateSettingsUseCase';
+import DestroySettingsUseCase from '@useCases/settingsUseCases/DestroySettingsUseCase';
+import UpdateSettingsUseCase from '@useCases/settingsUseCases/UpdateSettingsUseCase';
 import { Request, Response } from 'express';
 import { ISettings } from '@models/interfaces/ISettings';
 
