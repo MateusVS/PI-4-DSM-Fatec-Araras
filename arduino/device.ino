@@ -1,78 +1,93 @@
-int baselineTemp = 0;
-int celsius = 0;
+#include<Thermistor.h>
+
+Thermistor temperatura(2);
+int vermelho = 11;
+int azul = 9;
+int verde = 10;
+int buzzer = 5;
+int sensor = 2;
 
 void setup()
 {
-  pinMode(A0, INPUT);
-  Serial.begin(9600);//abre a porta serial, define a taxa de dados para 9600 bps 
-
-  pinMode(2, OUTPUT);//led vermelho
-  pinMode(3, OUTPUT);//led laranja
-  pinMode(4, OUTPUT);//led amarelo
-  pinMode(5, OUTPUT);//led verde
-  pinMode(6, OUTPUT);//led azul
-  pinMode(7, OUTPUT);//buzzer
-  
+  pinMode(vermelho, OUTPUT);
+  pinMode(azul, OUTPUT);
+  pinMode(verde, OUTPUT);
+  pinMode(buzzer, OUTPUT);
+  Serial.begin(9600);
 }
 
 void loop()
 {
-  // define a temperatura padrão
-  baselineTemp = 15;
-  // medir temperatura em Celsius 
-  celsius = map(((analogRead(A0) - 20) * 3.04), 0, 1023, -40, 125);
+  int temp = temperaturaAtual();
   
-  //liga led azul se temperatura abaixo de 15°
-  if (celsius < baselineTemp) {
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(5, LOW); 
-    digitalWrite(6, HIGH);
-    digitalWrite(7, LOW);
-  }    
-  
-   //liga led verde se temperatura entre 15° e 21°
-  if (celsius >= baselineTemp && celsius < baselineTemp + 6) {
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(5, HIGH); 
-    digitalWrite(6, LOW);
-    digitalWrite(7, LOW);
+  if (temp <= 20) {
+    apaga_amarelo();
+    acende_azul();
+    apaga_vermelho();
+    apaga_verde();
+  } else if (temp < 25) {
+    apaga_amarelo();
+    acende_verde();
+    apaga_vermelho();
+    apaga_azul();
+  } else if (temp < 30) {
+    apaga_azul();
+    apaga_verde();
+    apaga_vermelho();
+    acende_amarelo();
+  } else {
+    toca_buzzer();
+    apaga_amarelo();
+    acende_vermelho();
+    apaga_verde();
+    apaga_azul();
   }
-  //liga led amarelo se temperatura entre 21° e 28°
-  if (celsius >= baselineTemp + 6 && celsius < baselineTemp + 13) {
-    digitalWrite(2, LOW);
-    digitalWrite(3, LOW);
-    digitalWrite(4, HIGH);
-    digitalWrite(5, LOW); 
-    digitalWrite(6, LOW);
-    digitalWrite(7, LOW);
-  }
-  
- //   //liga led LARANJA se temperatura entre 35° e 39°
- // if (celsius >= baselineTemp + 11 && celsius < baselineTemp + 25) {
- //   digitalWrite(2, LOW);
- //   digitalWrite(3, HIGH);
- //   digitalWrite(4, LOW);
- //   digitalWrite(5, LOW); 
- //   digitalWrite(6, LOW);
-//    tone(7, 500, 200);   // liga o LED
+}
 
- // }
-    //liga led vermelho e buzzer se temperatura acima de 28°
-  if (celsius >= baselineTemp + 13) {
-    digitalWrite(2, HIGH);
-    digitalWrite(3, LOW);
-    digitalWrite(4, LOW);
-    digitalWrite(5, LOW); 
-    digitalWrite(6, LOW);
-    tone(7, 500, 1000);
-    delay (1000);
-  }
+int temperaturaAtual() {
+  int temp = temperatura.getTemp();
+  Serial.println(temp);
   
-  Serial.println(celsius);//mostra a temperatura
-  
-  delay(1000); // Aguarde 1000 milissegundos (s)
+  return temp;
+}
+
+void acende_amarelo() {
+  digitalWrite(vermelho, HIGH);
+  digitalWrite(verde, HIGH);
+}
+
+void apaga_amarelo() {
+  digitalWrite(verde, LOW);
+  digitalWrite(vermelho, LOW);
+}
+
+void acende_vermelho() {
+  digitalWrite(vermelho, HIGH);
+}
+
+void apaga_vermelho() {
+  digitalWrite(vermelho, LOW);
+}
+
+void acende_azul() {
+  digitalWrite(azul, HIGH);
+}
+
+void apaga_azul() {
+  digitalWrite(azul, LOW);
+}
+
+void acende_verde() {
+  digitalWrite(verde, HIGH);
+}
+
+void apaga_verde() {
+  digitalWrite(verde, LOW);
+}
+
+void toca_buzzer() {
+  tone(buzzer, 1000);
+  delay(500); 
+  noTone(buzzer);
+  delay(500);
 }
