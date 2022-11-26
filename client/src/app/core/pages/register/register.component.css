@@ -1,0 +1,32 @@
+.btn-login {
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
+    padding: 0.75rem 1rem;
+}
+  
+.btn-google {
+    color: white !important;
+    background-color: #ea4335;
+}
+
+.btn-facebook {
+    color: white !important;
+    background-color: #3b5998;
+}
+
+button {
+    background-color: #EBEBEB !important;
+    border-color: #EBEBEB !important;
+    color: black !important;
+}
+
+button:hover {
+    background-color: black !important;
+    border-color: black !important;
+    color: #EBEBEB !important;
+}
+
+label, button, b, a {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 400;
+}

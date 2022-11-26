@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+@import "~angular-notifier/styles.css";
+
+html, 
+body {
+    overflow: hidden !important;
+    height: 100% !important;      
+}
+
+a, ul {
+    cursor: pointer !important;
+}

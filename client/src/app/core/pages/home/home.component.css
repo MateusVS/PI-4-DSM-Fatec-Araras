@@ -1,0 +1,57 @@
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block !important;
+    width: 57vw !important;
+}
+
+.home {
+    height: 100% !important;      
+}
+
+span {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 400;
+}
+
+.button {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: transparent !important;
+}
+
+.fa-bars {
+    background-color: black !important; 
+    padding: 0.5rem !important; 
+    height: 2.3rem !important; 
+    width: 2.3rem !important; 
+    border-radius: 0.3rem !important; 
+    color: white !important;
+}
+
+.fa-bars:hover {
+    background-color: white !important;
+    color: black !important;
+    border: solid 0.1em;
+    box-shadow: 0 7px 14px rgba(0,0,0,0.15), 0 10px 10px rgba(0,0,0,0.20);
+    border-color: black;
+}
+
+.button2 {
+    background-color: #EBEBEB !important;
+    border-color: #EBEBEB !important;
+    color: black !important;
+}
+
+.button2:hover {
+    background-color: black !important;
+    border-color: black !important;
+    color: #EBEBEB !important;
+}
+
+label, button, b, a {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 400;
+}

@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" (click)="toggleNavbar()">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <a [routerLink]="''" routerLinkActive='active' class="navbar-brand" style="margin-left: 2rem; display: flex; vertical-align: middle !important;">
+        <img src="./assets/logotipo.png" width="90" height="22" class="d-inline-block align-top" alt="">    
+    </a>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" [ngClass]="{ 'show': navbarOpen }">
+
+        <ul class="navbar-nav mr-auto" style="margin-right: 1.2rem; color: #f12a26 !important;">
+            <i class="fa fa-file fa-1x"></i>
+        </ul>
+
+        <ul class="navbar-nav mr-auto" style="margin-right: 1.2rem; color: #f12a26 !important;">
+            <i class="fa fa-cog fa-1x"></i>
+        </ul>
+
+        <ul [routerLink]="['/login']" class="navbar-nav mr-auto" style="color: #f12a26 !important;">
+            <i class="fa fa-power-off fa-1x"></i>
+        </ul>
+
+    </div>
+</nav>

@@ -1,0 +1,28 @@
+nav {
+    background-color: #E8E8E8 !important;
+    height: 2rem;
+    background-color: #EEEE00 !important;
+}
+
+#navbarSupportedContent {
+    margin-right: 2rem;
+}
+
+.fa-power-off:hover, .fa-file:hover, .fa-cog:hover {
+    color: white;
+}
+
+@media (max-width: 991px) {
+    .navbar-nav {
+        margin: 10px;
+        border-bottom: 1px solid white;
+    }
+
+    .navbar-toggler {
+        margin-left: 10px;
+    }
+
+    #navbarSupportedContent {
+        margin-right: 10px !important;
+    }
+}

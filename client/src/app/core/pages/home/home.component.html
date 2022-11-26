@@ -1,0 +1,285 @@
+<ng-template #notification let-notificationData="notification">
+  <span data-bs-toggle="modal" data-bs-target="#deviceModal" [innerHTML]="notificationData.message"></span>
+</ng-template>
+
+<div class="row" style="background-color: white;">
+
+  <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+
+    <div align="center" style="display: flex; height: 100vh !important; margin-bottom: 2rem; margin-top: 4rem;" class="row home">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+        <div class="row" style="height: 47vh !important; align-items: center; align-items: flex-start;">
+
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <span style="font-size: 1.2vw;">{{ city }}, {{ state }}</span>
+          </div>
+
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-5" style="line-height: 1px;">
+            <img src="{{ icon }}" style="height: 22vh; width: 12vw; margin-bottom: 0px;"><br>
+
+            <span style="font-size: 5vw;">{{ currentWeatherTemp }}ºC</span>
+          </div>
+
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12" style="margin: 0px;">
+            <span style="font-size: 1.2vw;"><b>{{ dayOfWeek }}, {{ mounthOfYear }} {{ dayOfMounth }}</b></span>
+          </div>
+
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <span style="font-size: 1vw; opacity: 0.3 !important;">
+              <i class="fa fa-clock fa-1x" style="font-size: 1.1vw;" aria-hidden="true"></i>{{ currentTime }} <i class="fa fa-tint fa-1x" style="font-size: 1.1vw;" aria-hidden="true"></i>{{ humidity }}%
+            </span>
+          </div>
+
+        </div>
+
+        <hr width="60%" style="color: #EBEBEB; opacity: 0.8; border: 1px solid;">
+
+        <div class="row" style="height: 53vh !important;">
+
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+
+            <span style="letter-spacing: 1px;">
+              <p style="margin: 0px; line-height: 0.9; font-size: 1.8vw; margin-bottom: 2vh !important;">
+                Previsão para<br>
+                próximos dias
+              </p>
+            </span>
+
+            <p *ngFor="let w of weathers" style="font-size: 1.2vw !important; margin-bottom: 0px;"> 
+              {{ w.dt_txt }}&nbsp;&nbsp;&nbsp;<img style="width: 2.5vw;" src="{{ w.weather[0].icon }}">&nbsp;&nbsp;&nbsp;{{ w.main.temp_min }}/{{ w.main.temp_max }}ºC
+            </p>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-9 col-sm-9 col-md-9 col-lg-9 col-xl-9" style="background-color: #EBEBEB; height: 100vh;">
+    <div align="center" style="display: flex; height: 100vh !important; margin-bottom: 2rem; margin-top: 2rem;" class="row home">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+    
+        <div class="row" style="height: 10vh !important; align-items: center;">
+          <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10" style="display: flex; justify-content: flex-start; padding-left: 10vw;">
+    
+              <span style="color: #f12a26; font-size: 2.2vw;">
+                {{ chartName01 }} 
+              </span>
+    
+              <span style="color: #de4331; font-size: 2.2vw;">
+                {{ chartName02 }}
+              </span>
+    
+              <span style="color: #c05e33; font-size: 2.2vw;">
+                {{ chartName03 }}
+              </span>
+    
+              <span style="color: #a0631e; font-size: 2.2vw;">
+                {{ chartName04 }}
+              </span>
+    
+              <span style="color: #8c7a26; font-size: 2.2vw;">
+                {{ chartName05 }}
+              </span>
+    
+              <span style="color: #6d8216; font-size: 2.2vw;">
+                {{ chartName06 }}
+              </span>
+    
+              <span style="color: #43970a; font-size: 2.2vw;">
+                {{ chartName07 }}
+              </span>
+    
+              <span style="color: #30a90c; font-size: 2.2vw;">
+                {{ chartName08 }}
+              </span>
+    
+              <span style="color: #4eb330; font-size: 2.2vw;">
+                {{ chartName09 }}
+              </span>
+          </div>
+
+          <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2" style="padding: 0px;">
+            <div mdbDropdown class="dropdown" style="display: flex; justify-content: flex-start;">
+              <button
+                style="padding-left: 1vw;"
+                class="btn btn-secondary dropdown-toggle button"  
+                role="button" 
+                id="dropdownMenuLink" 
+                data-bs-toggle="dropdown" 
+                aria-expanded="false"
+              >
+                <i class="fa fa-bars fa-2x"></i>
+              </button>
+              <!--<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deviceModal">
+                  {{ items[0].text }}
+                </li>
+                <li class="dropdown-item" [routerLink]="['/login']">
+                  {{ items[1].text }}
+                </li>
+              </ul>-->
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deviceModal" tabindex="-1" aria-labelledby="deviceModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="deviceModalLabel">Update device</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+
+                <form
+                  [formGroup]="deviceForm" 
+                  (ngSubmit)="onSubmit()">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                      <div class="form-group" [ngClass]="aplicaCssErro('city')">
+                        <input type="text" placeholder="City *" class="form-control" formControlName="city" id="city"/>
+
+                        <app-campo-control-erro
+                          [mostrarErro]="verificaValidTouched('city')"
+                          msgErro="City is required."
+                        ></app-campo-control-erro>
+                      </div>
+                    </div>
+  
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                      <select class="form-select" aria-label="Default select example" class="form-control" id="colorSelectOne">
+                        <option selected>Select a color < 16º</option>
+                        <option value="1" >Blue</option>
+                        <option value="2">Green</option>
+                        <option value="3">Red</option>
+                        <option value="3">Yellow</option>
+                      </select>
+                    </div>
+
+                  </div>
+                  
+                  <div class="row mt-3">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select a color < 21º</option>
+                        <option value="1">Blue</option>
+                        <option value="2">Green</option>
+                        <option value="3">Red</option>
+                        <option value="3">Yellow</option>
+                      </select>
+                    </div>
+  
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select a color < 29º</option>
+                        <option value="1">Blue</option>
+                        <option value="2">Green</option>
+                        <option value="3">Red</option>
+                        <option value="3">Yellow</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row mt-3">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Select a color > 28º</option>
+                        <option value="1">Blue</option>
+                        <option value="2">Green</option>
+                        <option value="3">Red</option>
+                        <option value="3">Yellow</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div align="center" class="mt-4">
+                    <button type="button" class="btn btn-secondary button2" data-bs-dismiss="modal" style="margin-right: 1rem;">Close</button>
+                    <button [disabled]="deviceForm.invalid" class="btn btn-primary button2">Save changes</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="height: 30vh !important; align-items: center; padding-left: 8vw; padding-right: 8vw;">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="padding: 0px;">
+            <span style="border-radius: 1.5rem; background-color: white; padding: 2rem; display: flex; justify-content: center; width: 17vw; padding: 0.6rem;">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span style="font-size: 1.5vw; opacity: 0.6;">Current Temperature</span>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span *ngIf="!!currentTemp" style="font-size: 4vw;">{{ currentTemp }}ºC</span>
+                </div>
+              </div>
+            </span>
+          </div>
+
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="padding: 0px;">
+            <span style="border-radius: 1.5rem; background-color: white; padding: 2rem; display: flex; justify-content: center; width: 17vw; padding: 0.6rem;">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span style="font-size: 1.5vw; opacity: 0.6;">Highlights of the day</span>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span *ngIf="!!currentTemp">
+                    <i class="fa fa-angle-up fa-2x" style="color: red;"></i>
+                    <span style="font-size: 1.4vw;"> {{ tempMax }}ºC</span>
+                  </span>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span *ngIf="!!currentTemp">
+                    <i class="fa fa-angle-down fa-2x" style="color: blue;"></i>
+                    <span style="font-size: 1.4vw;"> {{ tempMin }}ºC</span>
+                  </span>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span *ngIf="!!currentTemp">
+                    <i class="fa fa-minus fa-1x" style="color: green;"></i>
+                    <span style="font-size: 1.4vw;"> {{ tempMiddle }}ºC</span>
+                  </span>
+                </div>
+              </div>
+            </span>
+          </div>
+
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4" style="padding: 0px;">
+            <span style="border-radius: 1.5rem; background-color: white; padding: 2rem; display: flex; justify-content: center; width: 17vw; padding: 0.6rem;">
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span style="font-size: 1.5vw; opacity: 0.6;">Current Temperature</span>
+                </div>
+
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"> 
+                  <span *ngIf="!!currentTemp" style="font-size: 4vw;">{{ currentTemp }}ºC</span>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+    
+        <div class="row" style="height: 60vh !important; align-items: center; align-items: flex-start;">
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">  
+            <canvas
+            style="border-radius: 1.5rem; background-color: white; padding: 2rem; height: 50vh !important; min-height: 50vh;"
+            baseChart
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [type]="lineChartType"
+            [legend]="true"
+            ></canvas>
+          </div>
+
+        </div>
+    
+      </div>
+    </div> 
+  </div>
+</div>
