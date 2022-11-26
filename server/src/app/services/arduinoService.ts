@@ -1,13 +1,13 @@
-import { SerialPort, ByteLengthParser } from 'serialport';
+import * as path from 'path';
+import * as fs from 'fs';
 
 export default class ArduinoService {
-  public static async getArduinoTemperature(): Promise<number> {
-    const port = new SerialPort({
-      path: '/dev/ttymxc2',
-      baudRate: 57600,
-      //parser: ByteLengthParser(1)
-    });
+  public static getArduinoTemperature(): number {
+    console.clear();
 
-    return 23;
+    const fileDir = path.resolve(__dirname, '../../../../common/temperature.txt');
+    const temperature: string = fs.readFileSync(fileDir, 'utf8').toString();
+
+    return +temperature;
   }
 }
