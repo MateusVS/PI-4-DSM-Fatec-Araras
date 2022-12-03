@@ -8,10 +8,10 @@ const sequelize = db as Sequelize;
 export class Settings extends Model<InferAttributes<Settings>, InferCreationAttributes<Settings>> implements ISettings {
   declare id: number;
   declare city: string;
-  declare blue_led_temperature: number;
-  declare green_led_temperature: number;
-  declare yellow_led_temperature: number;
-  declare red_led_temperature: number;
+  declare blue_led_temperature?: number;
+  declare green_led_temperature?: number;
+  declare yellow_led_temperature?: number;
+  declare red_led_temperature?: number;
   declare userId: number;
   declare createdAt: Date;
   declare updatedAt: Date;
@@ -35,39 +35,19 @@ Settings.init({
   },
   blue_led_temperature: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: 'O campo temperatura do led azul não pode ser vazio',
-      },
-    },
+    allowNull: true,
   },
   green_led_temperature: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: 'O campo temperatura do led verde não pode ser vazio',
-      },
-    },
+    allowNull: true,
   },
   red_led_temperature: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: 'O campo temperatura do led vermelho não pode ser vazio',
-      },
-    },
+    allowNull: true,
   },
   yellow_led_temperature: {
     type: DataTypes.INTEGER,
-    allowNull: false,
-    validate: {
-      notEmpty: {
-        msg: 'O campo temperatura do led amarelo não pode ser vazio',
-      },
-    },
+    allowNull: true,
   },
   userId: {
     type: DataTypes.INTEGER,

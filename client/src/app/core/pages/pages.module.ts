@@ -34,7 +34,10 @@ import { ArduinoComponent } from './arduino/arduino.component';
         path: 'login', component: LoginComponent
       },
       {
-        path: '', component: HomeComponent
+        path: '', component: LoginComponent
+      },
+      {
+        path: 'home', component: HomeComponent
       }
     ])
   ],

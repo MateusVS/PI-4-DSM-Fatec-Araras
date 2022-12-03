@@ -27,7 +27,6 @@ export class RegisterComponent implements OnInit {
       this._registerService.save(this.formRegistration.getRawValue()).subscribe({
         next: register => {
           if(!!register) {
-            alert(register)
             this._router.navigate([`login`]);
           }
         },

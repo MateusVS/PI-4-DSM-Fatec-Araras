@@ -35,8 +35,18 @@ export class LocalStorageService {
     return userData.city as string;
   }
 
+  public setCity(city: string): void {
+    let userData: LoginResponse = this.getUserData();
+    userData.city = city;
+    localStorage.setItem(this.key, JSON.stringify(userData));
+  }
+
   public isCity(): boolean {
     let userData: LoginResponse = JSON.parse(localStorage.getItem(this.key) as string);
     return !!userData?.city ?? false;
+  }
+
+  public getUserData(): any {
+    return JSON.parse(localStorage.getItem(this.key) as string);
   }
 }

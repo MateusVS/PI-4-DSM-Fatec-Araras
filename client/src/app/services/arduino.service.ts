@@ -16,8 +16,8 @@ export class ArduinoService {
     getTemperature(): Observable<number> {
         let token = this._localStorageService.getToken();
         const headers = new HttpHeaders()
-          .set('content-type', 'application/json')
-          .set('Access-Control-Allow-Origin', '*')
+          .set('content-type', 'application/json')
+          .set('Access-Control-Allow-Origin', '*')
           .set('Authorization', `Bearer ${token}`);
         return this._httpClient.get<number>(this._arduinoUrl, { 'headers': headers });
     }

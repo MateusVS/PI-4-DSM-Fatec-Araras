@@ -5,11 +5,11 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "yarn build && node ./dist/server.js",
+    "start": "npm run build && node ./dist/server.js",
     "start:dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules ./src/server.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
-    "test": "jest"
+    "test": "jest --setupFiles dotenv/config"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

@@ -4,7 +4,7 @@ import AppError from 'src/utils/errors/AppError';
 
 class ShowWeatherForecastUseCase {
   public async execute(): Promise<IWeatherForecast | Array<null>> {
-    const apiData = await OpenWeatherService.getWeatherForecast('araras');
+    const apiData = await OpenWeatherService.getWeatherForecast('dawddAAadD');
 
     if (apiData instanceof Array<null>) throw new AppError('Não foi possível localizar as informações de temperatura para a localização atual');
 

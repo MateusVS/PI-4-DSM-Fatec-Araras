@@ -1,6 +1,6 @@
 import axios from 'axios';
-import apiConfig, { IOpenWeatherApiConfig } from '@config/openWeatherApi';
-import AppError from 'src/utils/errors/AppError';
+import apiConfig, { IOpenWeatherApiConfig } from '../../config/openWeatherApi';
+import AppError from '../../utils/errors/AppError';
 
 export interface IApiResult {
   coord: {

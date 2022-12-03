@@ -18,7 +18,6 @@ class SettingsController {
 
   async create(req: Request, res: Response) {
     const createSettingsUseCase = new CreateSettingsUseCase();
-
     const settings = await createSettingsUseCase.execute(req.body);
 
     return res.status(200).json(settings);
