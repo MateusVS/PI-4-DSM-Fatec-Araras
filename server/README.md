@@ -63,3 +63,6 @@ Através dos dados obtidos pela api, o usuário pode comparar com o captado pela
 
 <h3>Diagrama de pacotes:</h3>
 <img src="../docs/diagramas/diagrama_pacotes.drawio.png" alt="Diagrama de pacotes" style="height: 70%; width:100%;"/>
+
+<h3>Diagrama de arquitetura:</h3>
+<img src="../docs/diagramas/diagrama_arquitetura.jpeg" alt="Diagrama de arquitetura" style="height: 70%; width:100%;"/>
