@@ -1,5 +1,15 @@
 Utilizados para demonstrar de forma visual os aspectos de um sistema, como relacionamentos, comportamentos, estruturas e funcionalidades.
 
+## Diagrama de casos de uso
+
+Diagrama responsável por descrever as principais funcionalidades do sistema e a interação do usuário com essas funcionalidades.
+
+<table>
+<tr>
+<td><img src="https://github.com/MateusVS/PI-4-DSM-Fatec-Araras/blob/main/docs/diagramas/diagrama_casos_de_uso.png" alt="Diagrama de casos de uso" style="height: 70%; width:100%;"/></td>
+</tr>
+</table>
+
 ## Diagrama de sequência
 
 Diagrama responsável por descrever como, e em qual ordem, um grupo de objetos trabalha em conjunto.
